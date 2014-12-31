@@ -207,7 +207,7 @@ function selectWinner(gameId, cardId) {
   game.winningCardId = cardId;
   game.isReadyForReview = true;
   player.awesomePoints = player.awesomePoints + 1;
-  game.history.push({ black: game.currentBlackCard, white: cardId, winner: player.name });
+  game.history.unshift({ black: game.currentBlackCard, white: cardId, winner: player.name });
   if(player.awesomePoints === game.pointsToWin) {
     game = getGame(gameId);
     game.isOver = true;
