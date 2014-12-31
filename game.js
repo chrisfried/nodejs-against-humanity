@@ -32,6 +32,7 @@ function toInfo(fullGameList) {
 
 function addGame(game) {
   game.players = [];
+  game.uniqueNames = [];
   game.history = [];
   game.isOver = false;
   game.winnerId = null;
@@ -60,6 +61,12 @@ function joinGame(game, player) {
     awesomePoints: 0,
     isCzar: false
     };
+
+    // Add Player names to White deck. For funsies.
+    if (game.uniqueNames.indexOf(player.name) < 0 && player.name.indexOf("anonymous") < 0) {
+      game.uniqueNames.push(player.name);
+      game.deck.white.push(player.name);
+    }
 
     for(var i = 0; i < 7; i++) {
         drawWhiteCard(game, joiningPlayer);
