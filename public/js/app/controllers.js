@@ -106,36 +106,71 @@ angular.module('myApp.controllers', [])
         $scope.getPlayerStatus = function(player) {
             var status ='';
             if(!$scope.game.isStarted) {
-                status = "waiting";
+                status = "Waiting...";
             }
             else if(!$scope.game.isReadyForReview && !$scope.game.isReadyForScoring) {
                 if(player.isCzar) {
-                    status = "card czar";
+                    status = "Card Czar";
                 } else if(!player.selectedWhiteCardId) {
-                    status = "selecting card";
+                    status = "Selecting...";
                 } else if(player.selectedWhiteCardId) {
-                    status = "card selected";
+                    status = "Selected";
                 }
             }
             else if($scope.game.isReadyForReview) {
                 if(player.isReady) {
-                    status = "ready for next round";
+                    status = "Ready";
                 } else {
-                    status = "reviewing results";
+                    status = "Reviewing...";
                 }
             }
             else if($scope.game.isReadyForScoring) {
                 if(player.isCzar) {
-                    status = "selecting winner";
+                    status = "Selecting...";
                 } else {
-                    status = "card selected"
+                    status = "Selected"
                 }
             }
             if($scope.game.isOver) {
-                status = player.awesomePoints == $scope.game.pointsToWin ? "WINNER!" : "loser :(";
+                status = player.awesomePoints == $scope.game.pointsToWin ? "WINNER!" : "Loser";
             }
 
             return status;
+        }
+
+        $scope.getPlayerStatusClass = function(player) {
+          var status ='';
+          if(!$scope.game.isStarted) {
+            status = "warning";
+          }
+          else if(!$scope.game.isReadyForReview && !$scope.game.isReadyForScoring) {
+            if(player.isCzar) {
+              status = "primary";
+            } else if(!player.selectedWhiteCardId) {
+              status = "warning";
+            } else if(player.selectedWhiteCardId) {
+              status = "success";
+            }
+          }
+          else if($scope.game.isReadyForReview) {
+            if(player.isReady) {
+              status = "success";
+            } else {
+              status = "warning";
+            }
+          }
+          else if($scope.game.isReadyForScoring) {
+            if(player.isCzar) {
+              status = "warning";
+            } else {
+              status = "success"
+            }
+          }
+          if($scope.game.isOver) {
+            status = player.awesomePoints == $scope.game.pointsToWin ? "success" : "danger";
+          }
+
+          return status;
         }
 
         $scope.selectCard = function(card) {

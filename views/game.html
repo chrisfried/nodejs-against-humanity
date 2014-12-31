@@ -67,9 +67,8 @@
     <div id="roundHistory" class="">
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="player in game.players">
-        <span class="badge pull-left">{{player.awesomePoints}}</span>
-        &nbsp;&nbsp;{{player.name}}
-        <span class="pull-right">{{getPlayerStatus(player)}}</span>
+          <span class="label label-as-badge pull-right" ng-class="'label' + getPlayerStatusClass(player)">{{player.awesomePoints}} | {{getPlayerStatus(player)}}</span>
+          {{player.name}}
         </li>
       </ul>
     </div>
