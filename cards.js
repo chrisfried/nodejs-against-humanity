@@ -909,6 +909,8 @@ function white() {
    "Taking down Santa with a surface-to-air missile.",
    "The tiny, calloused hands of the Chinese children that made this card.",
    "Eating an entire snowman.",
+   // Château Cards
+   "Chris Fried",
   ];
 }
 
