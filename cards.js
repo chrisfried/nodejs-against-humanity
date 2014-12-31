@@ -47,7 +47,6 @@ function black() {
     "Next from J.K. Rowling: Harry Potter and the Chamber of __________.",
     "Next on ESPN2: The World Series of __________.",
     "Science will never explain the origin of __________.",
-    "Sorry everyone, I just __________.",
     "Studies show that lab rats navigate mazes 50% faster after being exposed to __________.",
     "TSA guidelines now prohibit __________ on airplanes.",
     "The CIA now interrogates enemy agents by repeatedly subjecting them to __________.",
