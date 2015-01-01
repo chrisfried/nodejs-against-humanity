@@ -1,20 +1,30 @@
-<h4>Instructions</h4>
-<ul>
-  <li><form ng-show="inLobby" class="ng-pristine ng-valid" role="search">
-    <div class="form-group">
-      <label for="nameInput">Choose a Name</label><input type="text" id="nameInput" class="form-control ng-pristine ng-valid" placeholder="Enter name" ng-model="gameSvc.playerName">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">câh</a><p class="navbar-text">Château Gaming Against Humanity</p>
     </div>
-  </form></li>
-  <li>Click below to join a game.</li>
-  <li>Or <a href="" ng-click="createGame()">start a new game</a>.</li>
-</ul>
-<hr />
-<div class="row" id="availableGames" >
-  <div class="col-lg-10">
-    <strong id="noGames" ng-show="availableGames.length == 0">No active games. <a href="" ng-click="createGame()">Start a new game.</a></strong>
-    <div ng-repeat="game in availableGames" class="well">
-      <button ng-click="joinGame(game.id)" type="button" class="btn btn-primary" style="margin-right: 10px;">Join Game</button>
-      <span style="font-size: larger">{{game.name}} - {{game.players}} players</span>
+  </div>
+</nav>
+
+<div class="container">
+  <h4>Instructions</h4>
+  <ul>
+    <li><form ng-show="inLobby" class="ng-pristine ng-valid" role="search">
+      <div class="form-group">
+        <label for="nameInput">Choose a Name</label><input type="text" id="nameInput" class="form-control ng-pristine ng-valid" placeholder="Enter name" ng-model="gameSvc.playerName">
+      </div>
+    </form></li>
+    <li>Click below to join a game.</li>
+    <li>Or <a href="" ng-click="createGame()">start a new game</a>.</li>
+  </ul>
+  <hr />
+  <div class="row" id="availableGames" >
+    <div class="col-lg-10">
+      <strong id="noGames" ng-show="availableGames.length == 0">No active games. <a href="" ng-click="createGame()">Start a new game.</a></strong>
+      <div ng-repeat="game in availableGames" class="well">
+        <button ng-click="joinGame(game.id)" type="button" class="btn btn-primary" style="margin-right: 10px;">Join Game</button>
+        <span style="font-size: larger">{{game.name}} - {{game.players}} players</span>
+      </div>
     </div>
   </div>
 </div>

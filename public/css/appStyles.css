@@ -21,3 +21,8 @@
 .alert {
   font-size: 16px;
 }
+
+.navbar-inverse .navbar-brand {
+  font-weight: bold;
+  color: white;
+}
