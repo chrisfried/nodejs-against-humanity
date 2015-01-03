@@ -3,6 +3,19 @@ var cards = require('./cards.js');
 
 var gameList = [];
 
+var availableHangouts = [
+  "gzpor3x5gz2tvmlvnaj35fpey4a",
+  "gx3ltko3n7d5fzz3ikizlbdsfaa",
+  "g6h6jp34zvjva4nmbxkpaxkjt4a",
+  "g6qrsp42trimuvzlmlaxxpzioua",
+  "gv7qc3ybaz6zgwoof3ewpiwya4a",
+  "gx7tyjixzeswnmjyb5zbzrd7xma",
+  "gxfiqdhit2asfbzgpq2amnrbiaa",
+  "gsyltbe2755drym4uapwgyi6gaa",
+  "grdkkehlg6flhb2z2jqj5moszya",
+  "g7uscu37ldkip6mrjjxmvxcj44a",
+];
+
 function getDeck() {
   return cards.getDeck();
 }
@@ -43,6 +56,7 @@ function addGame(game) {
   game.isReadyForScoring = false;
   game.isReadyForReview = false;
   game.pointsToWin = 10;
+  game.hangout = availableHangouts.splice(0,1)[0];
   gameList.push(game);
   return game;
 }
@@ -103,6 +117,9 @@ function departGame(gameId, playerId) {
         removeFromArray(game.players, departingPlayer);
         if(game.players.length === 0){
             //kill the game
+            if (game.hangout) {
+              availableHangouts.push(game.hangout);
+            }
             removeFromArray(gameList, game);
         }
     }
