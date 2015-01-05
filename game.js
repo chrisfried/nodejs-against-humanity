@@ -178,8 +178,7 @@ function roundEnded(game) {
 
 function drawWhiteCard(game, player) {
   var whiteIndex = Math.floor(Math.random() * game.deck.white.length);
-  player.cards.push(game.deck.white[whiteIndex]);
-  game.deck.white.splice(whiteIndex, 1);
+  player.cards.push(game.deck.white.splice(whiteIndex, 1)[0]);
 }
 
 function setCurrentBlackCard(game) {
