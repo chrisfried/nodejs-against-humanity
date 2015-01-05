@@ -114,6 +114,9 @@ function departGame(gameId, playerId) {
         var departingPlayer = _.find(game.players, function(p){
             return p.id === playerId;
         });
+        _.each(departingPlayer.cards,function(card) {
+          game.deck.white.push(card);
+        });
         removeFromArray(game.players, departingPlayer);
         if(game.players.length === 0){
             //kill the game
