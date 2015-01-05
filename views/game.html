@@ -24,35 +24,20 @@
       <div id="notificationWaitingOnCzar" ng-show="showNotificationWaitingOnCzar()" class=" alert alert-warning center">Waiting for the Card Czar to pick winner.</div>
       <div id="notificationWaitingOnCards" ng-show="showNotificationWaitingOnCards()" class=" alert alert-warning center">Waiting for other players.</div>
       <div id="notificationSelectWinner" ng-show="showNotificationSelectWinner()" class=" alert alert-success center">Select a card to be the winner.</div>
-      <div class="" ng-show="showWhiteCardList()">
-        <table id="whiteCards" class="table">
-          <tbody id="whiteCardSelection">
-            <tr ng-repeat="whiteCard in currentPlayer.cards">
-              <td>
-                <button class="btn btn-default" ng-class="getButtonClass(whiteCard)" ng-click="selectCard(whiteCard)">{{getButtonText(whiteCard)}}</button>
-              </td>
-              <td class="col-lg-10 col-md-10" style="font-size: 16px; font-weight: bold; line-height: 25px;">{{whiteCard}}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="whiteCardSelection" ng-show="showWhiteCardList()">
+        <div ng-repeat="whiteCard in currentPlayer.cards" ng-class="getCardClass(whiteCard)" ng-click="selectCard(whiteCard)">
+          {{whiteCard}}
+        </div>
       </div>
-      <div class="" ng-show="showSelectedWhiteCardList()">
-        <table id="selectedWhiteCards" class="table">
-          <tbody>
-            <tr ng-repeat="player in game.players | filter:whiteCardNonNull" ng-class="getWinningCardClass(player.selectedWhiteCardId)">
-              <td>
-                <button class="btn btn-default" ng-show="!game.isReadyForReview" ng-click="selectWinner(player.selectedWhiteCardId)">select</button>
-                <span ng-show="game.isReadyForReview">{{player.name}}</span>
-              </td>
-              <td class="col-lg-10 col-md-10" style="font-size: 16px; font-weight: bold; line-height: 25px;"><span ng-show="game.winningCardId === player.selectedWhiteCardId">Winner: &nbsp;</span>{{player.selectedWhiteCardId}}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="selectedWhiteCards" ng-show="showSelectedWhiteCardListCzar()">
+        <div class="whiteCard whiteCardSelect" ng-repeat="player in game.players | filter:whiteCardNonNull" ng-click="selectWinner(player.selectedWhiteCardId)">
+          {{player.selectedWhiteCardId}}
+        </div>
       </div>
-      <div id="notificationRoundComplete" ng-show="game.isReadyForReview" class=" alert alert-info center">winner selected, next round will start when everyone is ready</div>
-      <div id="buttonNextRound" ng-show="game.isReadyForReview && !currentPlayer.isReady" class="">
-        <button ng-click="readyForNextRound()" ng-show="!game.isOver" class="btn btn-lg btn-primary btn-block">ready</button>
-        <button ng-click="readyForNextRound()" ng-show="game.isOver" class="btn btn-lg btn-primary btn-block">start new game</button>
+      <div id="selectedWhiteCards" ng-show="showSelectedWhiteCardListPlayers()">
+        <div class="whiteCard" ng-repeat="player in game.players | filter:whiteCardNonNull">
+          {{player.selectedWhiteCardId}}
+        </div>
       </div>
     </div>
     <div class="col-sm-3">

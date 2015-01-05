@@ -82,9 +82,14 @@ angular.module('myApp.controllers', [])
             return !$scope.currentPlayer.isCzar && $scope.game.isStarted && !$scope.game.isReadyForScoring
         };
 
-        $scope.showSelectedWhiteCardList = function() {
+        $scope.showSelectedWhiteCardListCzar = function() {
             return ($scope.currentPlayer.isCzar && $scope.game.isStarted && $scope.game.isReadyForScoring) ||
                 $scope.game.isReadyForReview
+        };
+
+        $scope.showSelectedWhiteCardListPlayers = function() {
+          return (!$scope.currentPlayer.isCzar && $scope.game.isStarted && $scope.game.isReadyForScoring) ||
+          $scope.game.isReadyForReview
         };
         //end ng-show helper functions
 
@@ -177,11 +182,11 @@ angular.module('myApp.controllers', [])
             GameService.selectCard($scope.gameId, $scope.playerId, card);
         };
 
-        $scope.getButtonClass = function(card) {
+        $scope.getCardClass = function(card) {
             if(card === $scope.currentPlayer.selectedWhiteCardId) {
-                return 'btn btn-primary'
+                return 'whiteCard whiteCardSelect btn-primary'
             } else {
-                return 'btn btn-default'
+                return 'whiteCard whiteCardSelect'
             }
         };
 
